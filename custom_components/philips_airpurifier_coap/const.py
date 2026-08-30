@@ -145,6 +145,7 @@ class FanModel(StrEnum):
     AC3220 = "AC3220"
     AC3221 = "AC3221"
     AC3259 = "AC3259"
+    AC3360 = "AC3360"
     AC3420 = "AC3420"
     AC3421 = "AC3421"
     AC3737 = "AC3737"
@@ -208,6 +209,8 @@ class PresetMode:
     HIGH = "high"
     VENTILATION = "ventilation"
     NATURAL = "natural"
+    ECO = "eco"
+    FUR_CAPTURE_BOOST = "fur_capture_boost"
 
     ICON_MAP: ClassVar = {
         SPEED_1: "pap:speed_1",
@@ -239,6 +242,8 @@ class PresetMode:
         HIGH: "pap:speed_3",
         VENTILATION: "pap:circulate",
         NATURAL: "pap:fan_speed_button",
+        ECO: "pap:speed_1",
+        FUR_CAPTURE_BOOST: "pap:speed_3",
     }
 
 
@@ -301,6 +306,8 @@ class FanAttributes(StrEnum):
     LABEL = "label"
     LAMP_MODE = "lamp_mode"
     AMBIENT_LIGHT_MODE = "ambient_light_mode"
+    FIRE = "fire"
+    FUN_PURIFICATION = "fun_purification"
     LEVEL = "level"
     UNIT = "unit"
     VALUE = "value"
@@ -458,8 +465,10 @@ class PhilipsApi:
     NEW2_DISPLAY_BACKLIGHT2 = "D03105"
     NEW2_DISPLAY_BACKLIGHT3 = "D03105#1"  # dimmable in 3 steps with auto
     NEW2_DISPLAY_BACKLIGHT4 = "D03105#2"  # dimmable in 3 steps
+    NEW2_LIGHT_BRIGHTNESS = "D03104"  # lamp, dimmable in 3 steps
     NEW2_LAMP_MODE = "D03135#1"
     NEW2_LAMP_MODE2 = "D03135#2"
+    NEW2_LAMP_MODE3 = "D03135#3"
     NEW2_AMBIENT_LIGHT_MODE = "D03137"
     NEW2_TEMPERATURE = "D03224"
     NEW2_SOFTWARE_VERSION = "D01S12"
@@ -506,6 +515,13 @@ class PhilipsApi:
         0: FanAttributes.OFF,
         1: FanAttributes.HUMIDITY,
         2: FanAttributes.AMBIENT_LIGHT_MODE,
+    }
+    LAMP_MODE_MAP3: ClassVar = {
+        0: FanAttributes.OFF,
+        1: FanAttributes.AIR_QUALITY,
+        2: FanAttributes.AMBIENT_LIGHT_MODE,
+        3: FanAttributes.FIRE,
+        4: FanAttributes.FUN_PURIFICATION,
     }
     AMBIENT_LIGHT_MODE_MAP: ClassVar = {
         1: "warm",
@@ -927,6 +943,14 @@ LIGHT_TYPES: dict[str, LightDescription] = {
         SWITCH_MEDIUM: 115,
         DIMMABLE: True,
     },
+    PhilipsApi.NEW2_LIGHT_BRIGHTNESS: {
+        FanAttributes.LABEL: FanAttributes.LIGHT_BRIGHTNESS,
+        CONF_ENTITY_CATEGORY: EntityCategory.CONFIG,
+        SWITCH_ON: 123,
+        SWITCH_OFF: 0,
+        SWITCH_MEDIUM: 115,
+        DIMMABLE: True,
+    },
 }
 
 SELECT_TYPES: dict[str, SelectDescription] = {
@@ -954,6 +978,11 @@ SELECT_TYPES: dict[str, SelectDescription] = {
         FanAttributes.LABEL: FanAttributes.LAMP_MODE,
         CONF_ENTITY_CATEGORY: EntityCategory.CONFIG,
         OPTIONS: PhilipsApi.LAMP_MODE_MAP2,
+    },
+    PhilipsApi.NEW2_LAMP_MODE3: {
+        FanAttributes.LABEL: FanAttributes.LAMP_MODE,
+        CONF_ENTITY_CATEGORY: EntityCategory.CONFIG,
+        OPTIONS: PhilipsApi.LAMP_MODE_MAP3,
     },
     PhilipsApi.NEW2_AMBIENT_LIGHT_MODE: {
         FanAttributes.LABEL: FanAttributes.AMBIENT_LIGHT_MODE,

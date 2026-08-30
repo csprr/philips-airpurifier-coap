@@ -95,6 +95,7 @@ Note: Some of these models seem to have a newer firmware that does not allow loc
 - AC3210
 - AC3220
 - AC3221
+- AC3360
 - AC3420
 - AC3421
 - AC3259
