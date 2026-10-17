@@ -191,7 +191,9 @@
           "off": "pap:light_function",
           "air_quality": "pap:light_function",
           "ambient_light_mode": "pap:light_function",
-          "humidity": "pap:light_function"
+          "humidity": "pap:light_function",
+          "fire": "pap:light_function",
+          "fun_purification": "pap:light_function"
         }
       },
       "ambient_light_mode": {

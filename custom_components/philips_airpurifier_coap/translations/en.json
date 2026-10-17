@@ -63,6 +63,8 @@
               "high": "High",
               "ventilation": "Ventilation",
               "natural": "Natural",
+              "eco": "Eco",
+              "fur_capture_boost": "Fur capture boost",
               "speed_1": "Speed 1",
               "gentle_speed_1": "Gentle/Speed 1",
               "speed_2": "Speed 2",
@@ -253,7 +255,9 @@
           "off": "Off",
           "air_quality": "Air quality",
           "ambient_light_mode": "Ambient",
-          "humidity": "Humidity"
+          "humidity": "Humidity",
+          "fire": "Fire",
+          "fun_purification": "Fun purification"
         }
       },
       "ambient_light_mode": {

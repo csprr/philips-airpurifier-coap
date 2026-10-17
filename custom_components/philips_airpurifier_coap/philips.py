@@ -1248,6 +1248,60 @@ class PhilipsAC3259(PhilipsGenericFan):
     AVAILABLE_SELECTS: ClassVar = [PhilipsApi.GAS_PREFERRED_INDEX]
 
 
+class PhilipsAC3360(PhilipsNew2GenericFan):
+    """AC3360."""
+
+    AVAILABLE_PRESET_MODES: ClassVar = {
+        PresetMode.AUTO: {
+            PhilipsApi.NEW2_POWER: 1,
+            PhilipsApi.NEW2_MODE_B: 0,
+            PhilipsApi.NEW2_MODE_C: 1,
+        },
+        PresetMode.ECO: {
+            PhilipsApi.NEW2_POWER: 1,
+            PhilipsApi.NEW2_MODE_B: 16,
+            PhilipsApi.NEW2_MODE_C: 16,
+        },
+        PresetMode.SLEEP: {
+            PhilipsApi.NEW2_POWER: 1,
+            PhilipsApi.NEW2_MODE_B: 17,
+            PhilipsApi.NEW2_MODE_C: 17,
+        },
+        PresetMode.TURBO: {
+            PhilipsApi.NEW2_POWER: 1,
+            PhilipsApi.NEW2_MODE_B: 18,
+            PhilipsApi.NEW2_MODE_C: 18,
+        },
+        PresetMode.FUR_CAPTURE_BOOST: {
+            PhilipsApi.NEW2_POWER: 1,
+            PhilipsApi.NEW2_MODE_B: 49,
+            PhilipsApi.NEW2_MODE_C: 19,
+        },
+    }
+    AVAILABLE_SPEEDS: ClassVar = {
+        PresetMode.SPEED_1: {
+            PhilipsApi.NEW2_POWER: 1,
+            PhilipsApi.NEW2_MODE_B: 1,
+            PhilipsApi.NEW2_MODE_C: 1,
+        },
+        PresetMode.SPEED_2: {
+            PhilipsApi.NEW2_POWER: 1,
+            PhilipsApi.NEW2_MODE_B: 2,
+            PhilipsApi.NEW2_MODE_C: 2,
+        },
+        PresetMode.SPEED_3: {
+            PhilipsApi.NEW2_POWER: 1,
+            PhilipsApi.NEW2_MODE_B: 3,
+            PhilipsApi.NEW2_MODE_C: 3,
+        },
+    }
+
+    AVAILABLE_SWITCHES: ClassVar = [PhilipsApi.NEW2_CHILD_LOCK, PhilipsApi.NEW2_BEEP]
+    AVAILABLE_LIGHTS: ClassVar = [PhilipsApi.NEW2_LIGHT_BRIGHTNESS]
+    AVAILABLE_SELECTS: ClassVar = [PhilipsApi.NEW2_LAMP_MODE3]
+    AVAILABLE_BINARY_SENSORS: ClassVar = [PhilipsApi.NEW2_ERROR_CODE]
+
+
 class PhilipsAC3420(PhilipsNew2GenericFan):
     """AC3420."""
 
@@ -2250,6 +2304,7 @@ model_to_class = {
     FanModel.AC3220: PhilipsAC3220,
     FanModel.AC3221: PhilipsAC3221,
     FanModel.AC3259: PhilipsAC3259,
+    FanModel.AC3360: PhilipsAC3360,
     FanModel.AC3420: PhilipsAC3420,
     FanModel.AC3421: PhilipsAC3421,
     FanModel.AC3737: PhilipsAC3737,
